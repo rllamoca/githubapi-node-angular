@@ -18,26 +18,20 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentUser = localStorage.getItem('auth_user');
-    /*    this.project = {
-          "name": "tonight",
-          "id": 322116245,
-          "private": false
-        }
-    */
-
-    this.dataService.getProjects().subscribe(
-      (result) => {
-            for(var i in result.result){
-              this.project = result.result[i];          
-            }
+    if(this.currentUser !== null && this.currentUser !== undefined){
+      this.dataService.getProjects().subscribe(
+        (result) => {
+          for(var i in result.result){
+            this.project = result.result[i];          
+          }
+          if(this.project.private){
+            this.iconProject = "fa-lock";
+          }
+          else{
+            this.iconProject = "fa-unlock";
+          }
         });
-    
-        if(this.project.private){
-          this.iconProject = "fa-lock";
-        }
-        else{
-          this.iconProject = "fa-unlock";
-        }
+    }
   }
 
   logout(){
