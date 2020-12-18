@@ -1,0 +1,16 @@
+<div class="jumbotron">
+    <h1 style="color: white;">GitHub API</h1>
+    <p class="lead" style="color: white;">
+        Este mini proyecto es para demostrar el uso del api de GitHub
+    </p>
+    <label for="username" style="color: white;">Para continuar ingrese su nombre:</label>
+    <div class="mx-auto" style="width: 200px;">
+        <input [(ngModel)]="username" type="text" name="username" class="form-control" id="username" aria-describedby="nameHelp" placeholder="Ejm: Pedrito Perez">
+    </div>
+    <br>
+<!--    <small id="nameHelp" class="form-text text-muted">Para continuar ingrese su nombre:</small>-->
+    <button class="btn btn-success" (click)="login()">Ingresar</button>
+    <div *ngIf="showLoader" class="mt-5 text-center">
+        <img src="assets/loader.gif"/>
+     </div>
+</div>

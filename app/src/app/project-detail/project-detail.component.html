@@ -1,0 +1,47 @@
+<div class="container" style="margin-top: 70px;">
+    <ul class="list-group" *ngFor="let commit of commits">
+        <li class="list-group-item">
+                <div class="col-md-12">
+                    {{ commit.message }}<br>
+                    <img src="{{ commit.imagen_usuario }}" alt="Avatar" class="avatar">
+                    <b>{{ commit.autor_usuario }} </b> hizo un commit el {{ commit.date | date: 'fullDate':'-0500':'es' }}
+                    <div class="float-right">
+                        <button class="btn btn-default" (click)="selectCommit(commit)"><i class="fa fa-eye"></i> Ver más</button>
+                        <a class="nav-link" target="_blank" href="{{ commit.html_url }}"> <i class="fa fa-github"></i> Ver cambios en github</a>
+                    </div> 
+                </div>
+        </li>
+        <div class="card" *ngIf="selectedCommit == commit">
+            <div class="card-block">
+                <ul>
+                    <li *ngFor="let filecommit of selectedCommit.archivos">
+                        <a (click)="selectFile(filecommit)" href="" data-toggle="modal" data-target="#exampleModal">{{filecommit.filename}}</a>
+                        <div class="float-right card-file">
+                            <i class="fa fa-plus-circle success-icon"></i>{{ filecommit.additions }}
+                            <i class="fa fa-minus-circle danger-icon"></i> {{ filecommit.deletions }}
+                            <i class="fa fa-exchange info-icon"></i> {{ filecommit.changes }}
+                        </div>        
+                    </li>
+                </ul>
+            </div>
+        </div>    
+    </ul>
+</div>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" *ngIf="selectedFile">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">{{ selectedFile.filename }}</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            {{ selectedFile.content }}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="showLoader" class="mt-5 text-center">
+    <img src="assets/loader.gif"/>
+ </div>

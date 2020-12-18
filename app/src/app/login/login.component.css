@@ -1,0 +1,7 @@
+.jumbotron{
+    background-image: url("/assets/fondo.jpg"); 
+    background-repeat: no-repeat;
+    background-position: center;
+    height: calc(95vh); 
+    text-align: center;
+}

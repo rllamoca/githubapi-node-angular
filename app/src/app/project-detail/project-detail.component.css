@@ -1,0 +1,20 @@
+.avatar{
+    width: 30px;
+    height: 30px;
+}
+
+.card-file{
+    margin-right: 10px !important;
+}
+
+.success-icon{
+    color: green;
+}
+
+.danger-icon{
+    color: red;
+}
+
+.info-icon{
+    color: yellow;
+}
