@@ -1,6 +1,7 @@
 import { Project } from "../models/project";
 import { ProjectDetail } from "../models/project_detail";
 import { FileCommit } from "../models/file_commit";
+import { readFileSync } from 'fs';
 
 export class Functions{
     baseuser = "rllamoca";
@@ -9,10 +10,11 @@ export class Functions{
     instance;
 
     constructor(){
+        const file = readFileSync('./tokenfile.txt', 'utf-8');
         this.instance = this.axios.create({
             baseURL: this.baseurl,
             timeout: 3000,
-            headers: {'user-agent': 'node.js', 'Authorization': 'Basic ' + Buffer.from('rllamoca:203a3fd24f3e738de4c35eec3863ab20887e34e6').toString('base64')}
+            headers: {'user-agent': 'node.js', 'Authorization': 'Basic ' + Buffer.from('rllamoca:'+file).toString('base64')}
         });
     }
     
