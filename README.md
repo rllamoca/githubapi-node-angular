@@ -10,7 +10,7 @@ To run this project, need to be installed in the computer
 
 The first step to run the project is up the backend server (NodeJS):
 1.	Clone git repository with the command “git clone https://github.com/rllamoca/githubapi-node-angular.git” and open a new terminal
-2.	Go to the main project folder and create a new file called “tokenfile.txt” and put in “226bec583ecc2ce6854164d48e6064ba10ed2e57” (make sure this file have permissions to read)
+2.	Go to the main project folder and create a new file called “tokenfile.txt” and put in a valid token value (make sure this file have permissions to read)
 3.	Then run the command “npm install” to install all dependencies
 4.	Then run the command “tsc”, this command will compile typescript files and generate a dist folder (if you are in windows environment you need to enable script execution with the command “Set-ExecutionPolicy unrestricted”)
 5.	Finally execute the command “node dist/index.js” to start the backend server
