@@ -41,8 +41,13 @@ export class Functions{
                 const responsefiles = await this.instance.get("/repos/"+ this.baseuser + "/" + projectName + "/commits/" + nCommit.sha);
                 for(var fi in responsefiles.data.files){
                     let nFil = new FileCommit(responsefiles.data.files[fi]);
-                    const contentFile = await this.instance.get(nFil.raw_url);
-                    nFil.content = contentFile.data;
+                    nFil.content = nFil.raw_url;
+                    /* Estas lineas comentadas estaban intencionadas para traer el contenido del archivo
+                    ya que el api nos devuelve una URL sin embargo se comento porque tomaba mucho tiempo
+                     de ejecucion*/
+                     
+                    /*const contentFile = await this.instance.get(nFil.raw_url);
+                    nFil.content = contentFile.data;*/
                     nCommit.files.push(nFil);
                 }
                 returnCommits.push(nCommit.detailProject());
