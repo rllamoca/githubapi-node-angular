@@ -105,3 +105,6 @@ dist
 
 #Angular App Dependency Directories
 app/node_modules/
+
+#token github
+tokenfile.txt
