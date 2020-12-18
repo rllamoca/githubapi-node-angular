@@ -15,7 +15,7 @@ The first step to run the project is up the backend server (NodeJS):
 4.	Then run the command “tsc”, this command will compile typescript files and generate a dist folder (if you are in windows environment you need to enable script execution with the command “Set-ExecutionPolicy unrestricted”)
 5.	Finally execute the command “node dist/index.js” to start the backend server
 
-In another terminal run these steps to make up the angular app (DON’T CLOSE THE PREVIOUS TERMINA WITH NODE JS)
+In another terminal run these steps to make up the angular app (DON’T CLOSE THE PREVIOUS TERMINAL WITH NODE JS)
 1.	Go to the main project and then go to the “app folder” with command “cd /app”
 2.	Run the command “npm install” to install all dependencies of angular project
 3.	Finally run “ng serve --proxy-config ./config/proxy.config.json” to start angular project
