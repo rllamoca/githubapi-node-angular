@@ -29,8 +29,6 @@ class App {
         id: req.body.name
       }
       const token = this.jwt.sign({user}, 'my_secret_key');
-      var resp = new Functions();
-      let result = await resp.signGithub();
       res.json({
         token
       })
@@ -72,6 +70,20 @@ class App {
         else{
           var resp = new Functions();
           var result = await resp.getCommits(req.params.projectName);
+          res.json({
+            result
+          })
+        }
+      });
+    })
+
+    router.post('/api/commit/', ensureToken, (req, res) => {
+      this.jwt.verify(req.token, 'my_secret_key', async (err, data) => { 
+        if(err) 
+          res.sendStatus(403); 
+        else{
+          var resp = new Functions();
+          var result = await resp.getFileContent(req.body.urlFile);
           res.json({
             result
           })

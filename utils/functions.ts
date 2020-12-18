@@ -41,11 +41,10 @@ export class Functions{
                 const responsefiles = await this.instance.get("/repos/"+ this.baseuser + "/" + projectName + "/commits/" + nCommit.sha);
                 for(var fi in responsefiles.data.files){
                     let nFil = new FileCommit(responsefiles.data.files[fi]);
-                    nFil.content = nFil.raw_url;
                     /* Estas lineas comentadas estaban intencionadas para traer el contenido del archivo
                     ya que el api nos devuelve una URL sin embargo se comento porque tomaba mucho tiempo
                      de ejecucion*/
-                     
+
                     /*const contentFile = await this.instance.get(nFil.raw_url);
                     nFil.content = contentFile.data;*/
                     nCommit.files.push(nFil);
@@ -57,18 +56,12 @@ export class Functions{
         }
     }
 
-    async signGithub() : Promise<any>{
+    async getFileContent(urlFile: string) : Promise<any>{
         try {
-            const response = await this.instance.get("/users/"+ this.baseuser + "/repos");
-            let returnProjects = [];
-            for(var i in response.data){
-                let nProject = new Project(response.data[i]);
-                returnProjects.push(nProject.infoProject());
-            }
-            return returnProjects;
+            const contentFile = await this.instance.get(urlFile);
+            return contentFile.data;
         } catch (error) {
-            console.error(error);
         }
     }
-    
+
 }
