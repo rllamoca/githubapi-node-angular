@@ -107,6 +107,12 @@ export class ProjectDetailComponent implements OnInit {
 
   public selectFile(file: any){
     this.selectedFile = file;
+    this.dataService.getFileContent(file.raw_url).subscribe(
+      (result) => {
+        file.content = result.result
+        console.log(this.selectedFile);
+      }
+    );
   }
 
 }

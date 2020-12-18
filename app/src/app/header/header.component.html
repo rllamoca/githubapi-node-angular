@@ -7,7 +7,7 @@
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a class="nav-link" routerLink="/project-detail">{{ project.name }} <i class="fa {{ iconProject }}"></i> </a>
+          <a class="nav-link" routerLink="/project-detail">{{ project !== undefined ? project.name : '' }} <i class="fa {{ iconProject }}"></i> </a>
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">

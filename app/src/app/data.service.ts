@@ -44,6 +44,11 @@ export class DataService {
     return this.http.get<any>('/api/projects/' + projectName, this.httpOptions)
   }
 
+  public getFileContent(urlFile: string): Observable<any>{
+    this.setHeaders();
+    return this.http.post<any>('/api/commit/', {urlFile: urlFile}, this.httpOptions);
+  }
+
   public setHeaders(){
     this.httpOptions = {
       headers: new HttpHeaders(
@@ -55,4 +60,7 @@ export class DataService {
     };
   }
 
+  /*  public createContact(contact: {id, name, description, email}){
+    this.contacts.push(contact);
+  }*/
 }

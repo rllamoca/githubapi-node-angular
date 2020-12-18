@@ -15,8 +15,8 @@
             <div class="card-block">
                 <ul>
                     <li *ngFor="let filecommit of selectedCommit.archivos">
-<!--                        <a (click)="selectFile(filecommit)" href="" data-toggle="modal" data-target="#exampleModal">{{filecommit.filename}}</a>-->
-                        <a href="{{ filecommit.raw_url }}" target="_blank">{{filecommit.filename}}</a>
+                        <a (click)="selectFile(filecommit)" href="" data-toggle="modal" data-target="#exampleModal">{{filecommit.filename}}</a>
+<!--                        <a href="filecommit.raw_url">{{filecommit.filename}}</a> -->
                         <div class="float-right card-file">
                             <i class="fa fa-plus-circle success-icon"></i>{{ filecommit.additions }}
                             <i class="fa fa-minus-circle danger-icon"></i> {{ filecommit.deletions }}
@@ -28,7 +28,7 @@
         </div>    
     </ul>
 </div>
-<!--<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" *ngIf="selectedFile">
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" *ngIf="selectedFile">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -42,7 +42,7 @@
         </div>
       </div>
     </div>
-  </div>-->
+  </div>
   <div *ngIf="showLoader" class="mt-5 text-center">
     <img src="assets/loader.gif"/>
  </div>
